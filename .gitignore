@@ -67,3 +67,13 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 /public/uploads
+./.idea
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+# Ignore .env file containing credentials.
+.env*
+
+# Ignore Mac and Linux file system files
+*.swp
+.DS_Store
