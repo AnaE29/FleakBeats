@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_10_155635) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_10_155722) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "name"
+    t.bigint "show_id", null: false
+    t.boolean "original"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["show_id"], name: "index_playlists_on_show_id"
+  end
+
+  create_table "shows", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +42,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_10_155635) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "playlists", "shows"
 end
