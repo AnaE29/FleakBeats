@@ -25,6 +25,7 @@ ids.each do |id|
   Show.create!(
     name: movie['title'],
     show_type: "movie",
+    tmdb_id: id,
     poster_url: "https://image.tmdb.org/t/p/original#{movie['poster_path']}",
     )
   puts "Création (Film): #{movie['title']}"
@@ -38,6 +39,7 @@ ids.each do |id|
   Show.create!(
     name: serie['title'],
     show_type: "tv",
+    tmdb_id: id,
     poster_url: "https://image.tmdb.org/t/p/original#{serie['poster_path']}",
   )
   puts "Création (Serie): #{serie['name']}"
