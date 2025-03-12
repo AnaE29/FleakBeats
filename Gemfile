@@ -79,3 +79,4 @@ gem "tailwindcss-rails", "~> 4.2"
 gem "simple_form", "~> 5.3"
 
 gem "simple_form-tailwind", "~> 0.1.2"
+gem "pg_search", "~> 2.3"
