@@ -20,4 +20,4 @@ series.each do |serie|
 end
 
 
-#TODO voir pour ajouter les musique dans la seed
+#TODO voir pour ajouter les musiques dans la seed
