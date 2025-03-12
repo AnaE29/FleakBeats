@@ -1,11 +1,87 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
 
 
-<iframe width="60%"
+
+<%# <iframe width="40%"
         height="300"
         scrolling="no"
         frameborder="no"
         allow="autoplay"
         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1937070759&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=true&visual=true">
-</iframe>
+</iframe> %>
+
+
+
+<div class="custom-player">
+  <button id="previousButton" >Previous</button>
+  <button id="playButton" >Play</button>
+  <button id="pauseButton">Pause</button>
+  <button id="nextButton">Next</button>
+
+</div>
+    <iframe id="soundcloudPlayer" width="40%" height="300" scrolling="yes" frameborder="yes"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1937070759&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=false&show_reposts=false&show_teaser=true&visual=true">
+    </iframe>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const playButton = document.getElementById('playButton');
+            if (playButton) {
+                playButton.addEventListener('click', function() {
+                    const iframe = document.getElementById('soundcloudPlayer');
+                    if (iframe) {
+                        const iframeWindow = iframe.contentWindow;
+                        iframeWindow.postMessage('{"method":"play"}', '*');
+                    }
+                });
+            } else {
+                console.error('Play button not found');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const pauseButton = document.getElementById('pauseButton');
+            if (pauseButton) {
+                pauseButton.addEventListener('click', function() {
+                    const iframe = document.getElementById('soundcloudPlayer');
+                    if (iframe) {
+                        const iframeWindow = iframe.contentWindow;
+                        iframeWindow.postMessage('{"method":"pause"}', '*');
+                    }
+                });
+            } else {
+                console.error('Pause button not found');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const previousButton = document.getElementById('previousButton');
+            if (previousButton) {
+                previousButton.addEventListener('click', function() {
+                    const iframe = document.getElementById('soundcloudPlayer');
+                    if (iframe) {
+                        const iframeWindow = iframe.contentWindow;
+                        iframeWindow.postMessage('{"method":"previous"}', '*');
+                    }
+                });
+            } else {
+                console.error('Preview button not found');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const nextButton = document.getElementById('nextButton');
+            if (nextButton) {
+                nextButton.addEventListener('click', function() {
+                    const iframe = document.getElementById('soundcloudPlayer');
+                    if (iframe) {
+                        const iframeWindow = iframe.contentWindow;
+                        iframeWindow.postMessage('{"method":"next"}', '*');
+                    }
+                });
+            } else {
+                console.error('Next button not found');
+            }
+        });
+    </script>
+
+   <div> soundsList__inner </div>

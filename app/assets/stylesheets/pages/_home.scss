@@ -1,1 +1,20 @@
 // Specific CSS for your home-page
+
+.custom-player {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 210px;
+  width: 160px;
+  background-color: antiquewhite;
+
+}
+
+.custom-player button {
+  padding: 3px 5px;
+  font-size: 10px;
+  cursor: pointer;
+  border: solid 1px black;
+  border-radius: 25px;
+  background-color: bisque;
+}
