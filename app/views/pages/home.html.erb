@@ -25,3 +25,10 @@
    <%# Iframe container %>
   <div id="soundcloud-container" class="mt-4"></div>
 </div>
+
+
+<section>
+  <% @shows.each do |show| %>
+    <%= render partial: 'shared/show_card', locals: { show: show } %>
+  <% end %>
+</section>
