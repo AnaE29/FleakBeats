@@ -1,0 +1,9 @@
+<div class="show-card" data-controller="show" data-action="click->show#open">
+  <img src="<%= show.poster_url %>" alt="<%= show.name %>" class="show-poster">
+</div>
+
+<div class="show-modal hidden" data-show-target="modal">
+  <div class="modal-content">
+    <img src="<%= show.poster_url %>" alt="<%= show.name %>" class="modal-poster">
+  </div>
+</div>
