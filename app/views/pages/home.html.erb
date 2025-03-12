@@ -27,6 +27,9 @@
 </div>
 
 
+<%= render partial: 'shared/dropdown_menu' %>
+
+
 <section>
   <% @shows.each do |show| %>
     <%= render partial: 'shared/show_card', locals: { show: show } %>
