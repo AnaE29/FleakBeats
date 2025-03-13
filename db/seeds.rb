@@ -3,13 +3,13 @@ require 'json'
 
 ids = [916224, 372058, 671, 808, 22, 11, 726759, 8587, 85, 118340, 424694]
 
-#Suzume 916224
+#Suzume 916224 DONE
 #Your name 372058
 #Harry Potter 671
-#Shrek 808
+#Shrek 808 DONE
 #Peaky blinders 60574 (TV)
-#Pirates des caraibes 22
-#Stranger Things 66732 (TV)
+#Pirates des caraibes 22 DONE
+#Stranger Things 66732 (TV) DONE
 #Attaques des titans (tokyo ghoul/demon slayer)
 #Stars wars 11
 #Squid game 93405 (TV)
