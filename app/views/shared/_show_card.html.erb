@@ -1,0 +1,13 @@
+<div class="show-container">
+  <div class="show-card"
+       data-controller="draggable show"
+       data-action="mousedown->draggable#startDrag click->show#open">
+    <img src="<%= show.poster_url %>" alt="<%= show.name %>" class="show-poster">
+  </div>
+
+  <div class="show-modal hidden" data-show-target="modal">
+    <div class="modal-content">
+      <img src="<%= show.poster_url %>" alt="<%= show.name %>" class="modal-poster">
+    </div>
+  </div>
+</div>
