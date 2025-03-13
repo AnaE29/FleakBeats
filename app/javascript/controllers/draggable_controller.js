@@ -1,15 +1,14 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static highestZIndex = 1;
-
   connect() {
-    this.element.style.position = "absolute";
-    this.element.style.zIndex = Controller.highestZIndex++;
-    this.randomizePosition();
+    if (!window.highestZIndex) {
+      window.highestZIndex = 1;
+    }
 
-    this.pos1 = this.pos2 = this.pos3 = this.pos4 = 0;
-    this.isDragging = false;
+    this.element.style.position = "absolute";
+    this.randomizePosition();
+    this.bringToFront();
   }
 
   randomizePosition() {
@@ -27,8 +26,6 @@ export default class extends Controller {
     event.preventDefault();
     this.isDragging = false;
 
-    this.bringToFront();
-
     this.pos3 = event.clientX;
     this.pos4 = event.clientY;
 
@@ -37,7 +34,8 @@ export default class extends Controller {
   }
 
   bringToFront() {
-    this.element.style.zIndex = ++Controller.highestZIndex;
+    window.highestZIndex += 1;
+    this.element.style.zIndex = window.highestZIndex;
   }
 
   drag(event) {
@@ -56,10 +54,9 @@ export default class extends Controller {
   stopDrag() {
     document.onmouseup = null;
     document.onmousemove = null;
-    setTimeout(() => {
-      if (!this.isDragging) {
-        this.element.click();
-      }
-    }, 50);
+
+    if (!this.isDragging) {
+      this.bringToFront();
+    }
   }
 }
