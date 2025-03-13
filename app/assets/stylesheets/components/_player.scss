@@ -1,0 +1,79 @@
+
+img {
+  object-fit: cover;
+  width: 160px;
+  height: 160px;
+  border-radius: .5em;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+
+
+
+.w-player {
+  width: 300px;
+  height: 200px;
+}
+
+.font-sans {
+  font-family: Inter var, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  cursor: ew-resize;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+  -webkit-transition: background .3s ease-in-out;
+  transition: background .3s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-runnable-track,
+input[type="range"]::-moz-range-track,
+input[type="range"]::-ms-track {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+div#song-saved.saved svg path{
+  fill: #38BDF8;
+  stroke: #38BDF8;
+}
+
+div.amplitude-play-pause.amplitude-playing #pause-icon{
+  display: block;
+}
+
+div.amplitude-play-pause.amplitude-paused #pause-icon{
+  display: none;
+}
+
+div.amplitude-play-pause.amplitude-paused #play-icon{
+  display: block;
+}
+
+div.amplitude-play-pause.amplitude-playing #play-icon{
+  display: none;
+}
