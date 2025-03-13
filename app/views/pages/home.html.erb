@@ -1,36 +1,5 @@
 <%= render "shared/player" %>
 
-
-<%# <script>
-let audioElement = document.querySelector("#audio-squid-game");
-let canvasElement = document.querySelector("#canvas-squid-game");
-let wave = new Wave(audioElement, canvasElement);
-
-// Simple example: add an animation
-wave.addAnimation(new wave.animations.Wave());
-
-// Intermediate example: add an animation with options
-wave.addAnimation(new wave.animations.Wave({
-    lineWidth: 10,
-    lineColor: "red",
-    count: 20
-}));
-
-// Expert example: add multiple animations with options
-wave.addAnimation(new wave.animations.Square({
-    count: 50,
-    diamater: 300
-}));
-
-wave.addAnimation(new wave.animations.Glob({
-    fillColor: {gradient: ["red","blue","green"], rotate: 45},
-    lineWidth: 10,
-    lineColor: "#fff"
-}));
-</script> %>
-<h1>FLEAKBEATS</h1>
-
-
 <div data-controller="toggle-music" class="toggle_container">
   <div class="absolute top-1 right-1 size-16">
     <label for="toggleThree" class="flex items-center cursor-pointer select-none text-dark dark:text-white">
