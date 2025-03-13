@@ -53,17 +53,11 @@
 @keyframes a { to { --a: 1turn } }
 
 
-/* prettifying and layout stuff, not needed for card glow part */
-
-
-
 body {
 	background: /* just to illustrate card transparency */
-		url(https://images.unsplash.com/photo-1729824346255-52a8f898fe84?w=1400)
-			50%/ cover #212121;
-	/* darken image (multiplying its RGB channels with
-	 * those of background-color) for better text contrast */
-	background-blend-mode: multiply
+		url("Design.gif")
+			10%/ cover /*color*/;
+	background-blend-mode: multiply;
 }
 
 
@@ -79,39 +73,4 @@ body {
     font-style: italic;
     font-weight: lighter;
   }
-}
-// #previousButton, #nextButton {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   background-color: aliceblue;
-//   border-radius: 25px;
-//   font-size: 10px;
-//   padding: 5px;
-// }
-
-
-// .custom-player button {
-//   display: flex;
-//   padding: 3px 5px;
-//   font-size: 10px;
-//   cursor: pointer;
-//   border: solid 1px black;
-//   border-radius: 25px;
-//   background-color: bisque;
-// }
-
-// audio::-webkit-media-controls-timeline,
-// video::-webkit-media-controls-timeline {
-//     display: none;
-// }
-
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display {
-    display: none;
-}
-
-audio::-webkit-media-controls-volume-slider-container,
-audio::-webkit-media-controls-volume-slider {
-    display: none;
 }
