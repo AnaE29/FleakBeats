@@ -1,33 +1,5 @@
 <%= render "shared/player" %>
 
-
-<%# <script>
-let audioElement = document.querySelector("#audio-squid-game");
-let canvasElement = document.querySelector("#canvas-squid-game");
-let wave = new Wave(audioElement, canvasElement);
-
-// Simple example: add an animation
-wave.addAnimation(new wave.animations.Wave());
-
-// Intermediate example: add an animation with options
-wave.addAnimation(new wave.animations.Wave({
-    lineWidth: 10,
-    lineColor: "red",
-    count: 20
-}));
-
-// Expert example: add multiple animations with options
-wave.addAnimation(new wave.animations.Square({
-    count: 50,
-    diamater: 300
-}));
-
-wave.addAnimation(new wave.animations.Glob({
-    fillColor: {gradient: ["red","blue","green"], rotate: 45},
-    lineWidth: 10,
-    lineColor: "#fff"
-}));
-</script> %>
 <h1>FLEAKBEATS</h1>
 
 
@@ -52,14 +24,10 @@ wave.addAnimation(new wave.animations.Glob({
         </div>
     </label>
   </div>
-   <%# Iframe container %>
-  <div id="soundcloud-container" class="mt-4"></div>
 </div>
 
 
 <%= render partial: 'shared/dropdown_menu' %>
-
-<br><br><br><br><br>
 
 <div class="show-container">
 <section>
