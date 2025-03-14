@@ -1,5 +1,3 @@
-<%= render "shared/player" %>
-
 <div data-controller="toggle-music" class="toggle_container">
   <div class="absolute top-1 right-1 size-16">
     <label for="toggleThree" class="flex items-center cursor-pointer select-none text-dark dark:text-white">
@@ -28,12 +26,10 @@
 
 <%= render partial: 'shared/dropdown_menu' %>
 
-<br><br><br><br><br>
-
 <div class="show-container">
 <section>
   <% @shows.each do |show| %>
-    <%= render partial: 'shared/show_card', locals: { show: show } %>
+    <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist.tracks.to_json } %>
   <% end %>
 </section>
 </div>
