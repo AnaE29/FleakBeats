@@ -47,7 +47,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
-gem "sassc-rails"
+# gem "sassc-rails"
 
 group :development, :test do
   gem "dotenv-rails"
