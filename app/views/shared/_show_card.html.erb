@@ -2,12 +2,15 @@
   <div class="show-card"
        data-controller="draggable show"
        data-action="mousedown->draggable#startDrag click->show#open"
-       data-show-index-value="0">
+       data-show-index-value="0"
+       >
     <div class="front">
       <img src="<%= show.poster_url %>" alt="<%= show.name %>" class="show-poster">
     </div>
     <div class="back">
-      <%= render partial: "shared/player", locals: { show: show, songs: songs } %>
+      <div data-controller="player">
+        <%= render partial: "shared/player", locals: { show: show, songs: songs } %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,10 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
-
+import Amplitude from "amplitudejs"
 // Connects to data-controller="player"
 export default class extends Controller {
+  static targets = ["url", "show"]
   // pour Rudy
 ///  static values = { songs: Array }
   connect() {
+    console.log(this.showTarget.dataset.amplitudePlaylist);
+
+    let songs = []
+    this.urlTargets.forEach(song => {
+      songs.push({"url": song.attributes.src.value, "amplitude-playlist": this.showTarget.dataset.amplitudePlaylist})
+    });
+
    /*  const url = this.squidgameTarget.src
     console.log(url) */
 
@@ -61,42 +69,9 @@ export default class extends Controller {
 
       // songs: this.songsValue,
 
-        "songs": [
-        {
-          "name": "Squid-Game",
-          "artist": "Toto",
-          "url": "https://521dimensions.com/song/Anthem-Emancipator.mp3",
-          "cover_art_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfNiZ_4Qb0qHbF6NT-QEee_F-osRFQJpWE1g&s"
-        },
 
-        {
-          "name": "Test",
-          "artist": "Test",
-          "url": "/assets/test-67b5afd5839d9e7cf283122b8e248424e23339f157173b7ccdddab5b49962cd8.mp3",
-          "cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/die-digital.jpg"
-        },
-        {
-          "name": "Offcut #6",
-          "artist": "Little People",
-          "album": "We Are But Hunks of Wood Remixes",
-          "url": "https://521dimensions.com/song/Offcut6-LittlePeople.mp3",
-          "cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/we-are-but-hunks-of-wood.jpg"
-        },
-        {
-          "name": "Dusk To Dawn",
-          "artist": "Emancipator",
-          "album": "Dusk To Dawn",
-          "url": "https://521dimensions.com/song/DuskToDawn-Emancipator.mp3",
-          "cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/from-dusk-to-dawn.jpg"
-        },
-        {
-          "name": "Anthem",
-          "artist": "Emancipator",
-          "album": "Soon It Will Be Cold Enough",
-          "url": "https://521dimensions.com/song/Anthem-Emancipator.mp3",
-          "cover_art_url": "https://521dimensions.com/img/open-source/amplitudejs/album-art/soon-it-will-be-cold-enough.jpg"
-        }
-        ]
+
+        "songs": songs
     });
 
     window.onkeydown = function(e) {

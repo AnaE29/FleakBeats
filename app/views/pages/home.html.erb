@@ -25,12 +25,13 @@
 </div>
 
 
+
 <%= render partial: 'shared/dropdown_menu' %>
 
 <div class="show-container">
-<section>
-  <% @shows.each do |show| %>
-    <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist.tracks.to_json } %>
-  <% end %>
+  <section>
+    <% @shows.each do |show| %>
+      <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist.tracks } %>
+    <% end %>
 </section>
 </div>
