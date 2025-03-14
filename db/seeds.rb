@@ -1,7 +1,8 @@
 require 'open-uri'
 require 'json'
 
-#ids = [916224, 372058, 671, 808, 22, 11, 726759, 8587, 85, 118340, 424694]
+# ids = [916224, 372058, 671, 808, 22, 11, 8587, 85, 118340, 424694]
+ids = [916224, 808, 22]
 
 #Suzume 916224 DONE
 #Your name 372058
@@ -31,8 +32,8 @@ ids.each do |id|
   puts "Création (Film): #{movie['title']}"
 end
 
-ids = [66732, 93405, 60574, 1399, 71446]
-
+# ids = [66732, 93405, 60574, 1399, 71446]
+ids = [66732, 93405]
 
 ids.each do |id|
   serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
