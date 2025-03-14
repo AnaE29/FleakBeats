@@ -53,12 +53,6 @@
 @keyframes a { to { --a: 1turn } }
 
 
-body {
-	background: /* just to illustrate card transparency */
-		url("Design.gif")
-			10%/ cover /*color*/;
-	background-blend-mode: multiply;
-}
 
 
 .song-name {
