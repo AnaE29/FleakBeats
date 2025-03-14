@@ -108,6 +108,12 @@ tracks = {
       name: "Tears of Suzume",
       artist: "Tears of Suzume"
     }
+  ],
+  93405 => [
+    {
+      name: "Pink Soldiers",
+      artist: "Pink Soldiers"
+    }
   ]
 }
 

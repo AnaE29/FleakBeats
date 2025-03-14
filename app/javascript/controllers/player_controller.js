@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="player"
 export default class extends Controller {
-  // static targets = ["squidgame"]
+  // pour Rudy
+///  static values = { songs: Array }
   connect() {
    /*  const url = this.squidgameTarget.src
     console.log(url) */
@@ -36,8 +37,6 @@ export default class extends Controller {
     let audioElement = document.querySelector('audio');
 
     //--------------------------------------------------------------------------
-
-
     Amplitude.init({
         "bindings": {
             37: 'prev',
@@ -59,6 +58,8 @@ export default class extends Controller {
                 slider.style.backgroundSize = percentage + '% 100%';
             }
         },
+
+      // songs: this.songsValue,
 
         "songs": [
         {

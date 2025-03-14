@@ -7,8 +7,7 @@
       <img src="<%= show.poster_url %>" alt="<%= show.name %>" class="show-poster">
     </div>
     <div class="back">
-      <!-- Ici le contenu retourné, par exemple le lecteur audio -->
-      <%= render partial: "shared/player", locals: { show: show } %>
+      <%= render partial: "shared/player", locals: { show: show, songs: songs } %>
     </div>
   </div>
 </div>
