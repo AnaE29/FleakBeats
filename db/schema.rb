@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_12_134701) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_14_095427) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_134701) do
     t.integer "tmdb_id"
   end
 
+  create_table "tracks", force: :cascade do |t|
+    t.string "name"
+    t.boolean "lofi"
+    t.string "artist"
+    t.string "url"
+    t.string "cover_art_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "playlist_id"
+    t.index ["playlist_id"], name: "index_tracks_on_playlist_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -46,4 +58,5 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_12_134701) do
   end
 
   add_foreign_key "playlists", "shows"
+  add_foreign_key "tracks", "playlists"
 end
