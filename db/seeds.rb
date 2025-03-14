@@ -57,16 +57,16 @@ tracks = {
       name: "Hoist the Colours",
       artist: "Hans Zimmer",
     }, {
-      name: "Up is Down",
+      name: "Up Is Down",
       artist: "Hans Zimmer",
     }
   ],
   808 => [
     {
-      name: "All Star",
+      name: "All Stars",
       artist: "Smash Mouth"
     }, {
-      name: "Holding Out for a Hero",
+      name: "Holding Out For A Hero",
       artist: "Smash Mouth",
     }, {
       name: "Im a Believer",
@@ -99,8 +99,8 @@ tracks = {
       name: "Kanata Haluka",
       artist: "Kanata Haluka"
     }, {
-      name: "Suzume",
-      artist: "Suzume"
+      name: "Suzume no Tojimari",
+      artist: "Suzume no Tojimari"
     }, {
       name: "Tamaki",
       artist: "Tamaki"
@@ -126,7 +126,7 @@ tracks.each do |id, songs|
       name: "#{song[:name]} - Normal",
       artist: song[:artist],
       lofi: false,
-      url: "/assets/audios/#{song[:name]} - Normal.mp3",
+      url: "#{id}/#{song[:name]} - Normal.mp3",
       cover_art_url: show.poster_url
     )
     Track.create!(
@@ -134,7 +134,7 @@ tracks.each do |id, songs|
       name: "#{song[:name]} - Lofi",
       artist: song[:artist],
       lofi: true,
-      url: "/assets/audios/#{song[:name]} - Lofi.mp3",
+      url: "#{id}/#{song[:name]} - Lofi.mp3",
       cover_art_url: show.poster_url
     )
     puts "Création (Track): #{song[:name]}"
