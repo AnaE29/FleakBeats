@@ -11,19 +11,13 @@ export default class extends Controller {
     // "amplitude-playlist": this.showTarget.dataset.amplitudePlaylist}
 
 
-    function toSnakeCase(str) {
-      return str
-        .toLowerCase() // Tout en minuscules
-        .replace(/[^a-zA-Z0-9]+/g, '_') // Remplace les espaces et caractères spéciaux par _
-        .replace(/_+/g, '_') // Supprime les underscores multiples
-        .replace(/^_|_$/g, ''); // Supprime les underscores en début et fin
-    }
+
 
 
     let playlists = {};
     this.showTargets.forEach((showTarget) => {
       const urls = Array.from(showTarget.querySelectorAll('[data-player-target="url"]')).map((url) => { return {"url": url.src}} );
-      const playlistName = toSnakeCase(showTarget.dataset.playlistName);
+      const playlistName = showTarget.dataset.playlistName;
       playlists[playlistName] = {"songs": urls};
     });
 
@@ -58,7 +52,7 @@ export default class extends Controller {
 
 
     //----------- TODO : Récupération du lien MP3 pour le lecteur --------------
-    let audioElement = document.querySelector('audio');
+
 
     //--------------------------------------------------------------------------
     Amplitude.init({
@@ -82,7 +76,9 @@ export default class extends Controller {
           slider.style.backgroundSize = percentage + '% 100%';
         }
       },
-
+      "songs": [
+        {"url": ""}
+      ],
 
       // songs: playlists['shrek']['songs'],
 
