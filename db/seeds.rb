@@ -6,8 +6,8 @@ Playlist.destroy_all
 Show.destroy_all
 
 
-# ids = [916224, 372058, 671, 808, 22, 11, 8587, 85, 118340, 424694]
-ids = [808, 22]
+ids = [916224, 372058, 671, 808, 22, 11, 8587, 85, 118340, 424694]
+# ids = [808, 22]
 
 #Suzume 916224 DONE
 #Your name 372058
@@ -37,8 +37,8 @@ ids.each do |id|
   puts "Création (Film): #{movie['title']}"
 end
 
-# ids = [66732, 93405, 60574, 1399, 71446]
-ids = [93405, 22, 808]
+ids = [66732, 93405, 60574, 1399, 71446]
+# ids = [93405, 22, 808]
 
 ids.each do |id|
   serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
@@ -91,6 +91,43 @@ tracks = {
     }, {
       name: "hallelujah",
       artist: "Rufus Wainwright",
+    }
+  ],
+  66732 => [
+    {
+      name: "africa",
+      artist: "Toto",
+    },
+    {
+      name: "ghostbusters",
+      artist: "Ray Parker"
+    },
+    {
+      name: "running_up_that_hill",
+      artist: "Kate Bush",
+    },
+    {
+      name: "should_i_stay_or_should_i_go",
+      artist: "The Clash",
+    },
+    {
+      name: "time_after_time",
+      artist: "Cyndi Lauper",
+    }
+  ],
+  916224 => [
+    {
+      name: "kanata_haluka",
+      artist: "Radwimps"
+    }, {
+      name: "suzume_no_tojimari",
+      artist: "Suzume",
+    }, {
+      name: "tamaki",
+      artist: "Suzume",
+    }, {
+      name: "tears_of_suzume",
+      artist: "Suzume",
     }
   ]
 }

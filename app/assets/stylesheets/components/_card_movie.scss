@@ -5,6 +5,11 @@
   perspective: 1000px;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
 .show-card > .front,
 .show-card > .back {
   width: 100%;
@@ -30,4 +35,3 @@
 .show-card.flipped > .back {
   transform: rotateY(0deg);
 }
-
