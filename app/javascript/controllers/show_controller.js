@@ -9,7 +9,7 @@ export default class extends Controller {
     if (window.currentlyOpenCard && window.currentlyOpenCard !== this) {
       window.currentlyOpenCard.close();
     }
-    
+
     this.element.classList.add("flipped");
     window.currentlyOpenCard = this;
 

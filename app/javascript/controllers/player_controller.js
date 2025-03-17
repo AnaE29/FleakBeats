@@ -1,24 +1,18 @@
 import { Controller } from "@hotwired/stimulus"
 import Amplitude from "amplitudejs"
-// Connects to data-controller="player"
+
 export default class extends Controller {
   static targets = ["show", "url"]
-  // pour Rudy
-  ///  static values = { songs: Array }
+
   connect() {
-
-
-    // "amplitude-playlist": this.showTarget.dataset.amplitudePlaylist}
-
-
-
-
 
     let playlists = {};
     this.showTargets.forEach((showTarget) => {
-      const urls = Array.from(showTarget.querySelectorAll('[data-player-target="url"]')).map((url) => { return {"url": url.src, "artist": "TEST"}} );
+      const urls = Array.from(showTarget.querySelectorAll('[data-player-target="url"]')).map((url) =>  url.src );
+      const artists = Array.from(showTarget.querySelectorAll('[data-amplitude-info="artist"]')).map((artist) =>  artist.dataset.artist);
+      const songs = urls.map((value, index) => { return { "url": value, "artist": artists[index] } });
       const playlistName = showTarget.dataset.playlistName;
-      playlists[playlistName] = {"songs": urls };
+      playlists[playlistName] = {"songs": songs };
     });
 
 
@@ -42,24 +36,18 @@ export default class extends Controller {
 
     // ---------------- TODO : Button Favorite ------------------------------------
 
-    // document.getElementById('song-saved').addEventListener('click', function(){
-    //   document.getElementById('song-saved').classList.toggle('saved');
-    // });
+    document.getElementById('song-saved').addEventListener('click', function(){
+      document.getElementById('song-saved').classList.toggle('saved');
+    });
 
     // ---------------- !TODO : Button Favorite! ------------------------------------
 
 
-
-
-    //----------- TODO : Récupération du lien MP3 pour le lecteur --------------
-
-
-    //--------------------------------------------------------------------------
     Amplitude.init({
       "bindings": {
         37: 'prev',
         39: 'next',
-        32: 'play_pause'
+        32: 'play_pause',
       },
       "callbacks": {
         timeupdate: function(){
@@ -69,15 +57,12 @@ export default class extends Controller {
               percentage = 0;
           }
 
-          /**
-           * Massive Help from: https://nikitahl.com/style-range-input-css
-           */
           let slider = document.getElementById('song-percentage-played');
           slider.style.backgroundSize = percentage + '% 100%';
         }
       },
       "songs": [
-        {"url": ""}
+        {"url": "", "artist": ""}
       ],
       // songs: playlists['shrek']['songs'],
 
@@ -94,4 +79,9 @@ export default class extends Controller {
 
 
   }
+
+  // autoplay() {
+  //   this.showTarget.querySelector(".amplitude-play-pause").click();
+
+  // }
 }
