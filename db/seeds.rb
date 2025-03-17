@@ -1,8 +1,13 @@
 require 'open-uri'
 require 'json'
 
+Track.destroy_all
+Playlist.destroy_all
+Show.destroy_all
+
+
 # ids = [916224, 372058, 671, 808, 22, 11, 8587, 85, 118340, 424694]
-ids = [916224, 808, 22]
+ids = [808, 22]
 
 #Suzume 916224 DONE
 #Your name 372058
@@ -33,18 +38,18 @@ ids.each do |id|
 end
 
 # ids = [66732, 93405, 60574, 1399, 71446]
-ids = [66732, 93405]
+# ids = [66732, 93405]
 
-ids.each do |id|
-  serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
-  Show.create!(
-    name: serie['title'],
-    show_type: "tv",
-    tmdb_id: id,
-    poster_url: "https://image.tmdb.org/t/p/original#{serie['poster_path']}",
-  )
-  puts "Création (Serie): #{serie['name']}"
-end
+# ids.each do |id|
+#   serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
+#   Show.create!(
+#     name: serie['title'],
+#     show_type: "tv",
+#     tmdb_id: id,
+#     poster_url: "https://image.tmdb.org/t/p/original#{serie['poster_path']}",
+#   )
+#   puts "Création (Serie): #{serie['name']}"
+# end
 tracks = {
   22 => [
     {
@@ -74,45 +79,6 @@ tracks = {
     }, {
       name: "Hallelujah",
       artist: "Rufus Wainwright",
-    }
-  ],
-  66732 => [
-    {
-      name: "Ghostbusters",
-      artist: "Ray Parker Jr."
-    }, {
-      name: "Running Up That Hill",
-      artist: "Ray Parker Jr."
-    }, {
-      name: "Should I Stay or Should I Go",
-      artist: "The Clash"
-    }, {
-      name: "Time After Time",
-      artist: "Cyndi Lauper"
-    }, {
-      name: "Africa",
-      artist: "Toto"
-    }
-  ],
-  916224 => [
-    {
-      name: "Kanata Haluka",
-      artist: "Kanata Haluka"
-    }, {
-      name: "Suzume no Tojimari",
-      artist: "Suzume no Tojimari"
-    }, {
-      name: "Tamaki",
-      artist: "Tamaki"
-    }, {
-      name: "Tears of Suzume",
-      artist: "Tears of Suzume"
-    }
-  ],
-  93405 => [
-    {
-      name: "Pink Soldiers",
-      artist: "Pink Soldiers"
     }
   ]
 }
