@@ -38,7 +38,7 @@ ids.each do |id|
 end
 
 # ids = [66732, 93405, 60574, 1399, 71446]
-# ids = [66732, 93405]
+ids = [93405]
 
 # ids.each do |id|
 #   serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
@@ -64,6 +64,12 @@ tracks = {
     }, {
       name: "Up Is Down",
       artist: "Hans Zimmer",
+    }
+  ],
+  93405 => [
+    {
+      name: "Pink Soldiers",
+      artist: "Pink Soldiers"
     }
   ],
   808 => [
