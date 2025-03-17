@@ -40,50 +40,56 @@ end
 # ids = [66732, 93405, 60574, 1399, 71446]
 ids = [93405]
 
-# ids.each do |id|
-#   serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
-#   Show.create!(
-#     name: serie['title'],
-#     show_type: "tv",
-#     tmdb_id: id,
-#     poster_url: "https://image.tmdb.org/t/p/original#{serie['poster_path']}",
-#   )
-#   puts "Création (Serie): #{serie['name']}"
-# end
+ids.each do |id|
+  serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
+  Show.create!(
+    name: serie['title'],
+    show_type: "tv",
+    tmdb_id: id,
+    poster_url: "https://image.tmdb.org/t/p/original#{serie['poster_path']}",
+  )
+  puts "Création (Serie): #{serie['name']}"
+end
 tracks = {
   22 => [
     {
-      name: "Davy Jones",
+      name: "davy_jones",
       artist: "Hans Zimmer"
     }, {
-      name: "He’s a Pirate",
+      name: "he_s_a_pirate",
       artist: "Hans Zimmer",
     }, {
-      name: "Hoist the Colours",
+      name: "hoist_the_colours",
       artist: "Hans Zimmer",
     }, {
-      name: "Up Is Down",
+      name: "up_is_down",
       artist: "Hans Zimmer",
     }
   ],
   93405 => [
     {
-      name: "Pink Soldiers",
+      name: "mingle_game",
       artist: "Pink Soldiers"
+    }, {
+      name: "pink_soldiers",
+      artist: "Pink Soldiers",
+    }, {
+      name: "the_blue_danube_waltz",
+      artist: "Johann Strauss II",
     }
   ],
   808 => [
     {
-      name: "All Stars",
+      name: "all_stars",
       artist: "Smash Mouth"
     }, {
-      name: "Holding Out For A Hero",
+      name: "holding_out_for_a_hero",
       artist: "Smash Mouth",
     }, {
-      name: "Im a Believer",
+      name: "im_a_believer",
       artist: "Smash Mouth",
     }, {
-      name: "Hallelujah",
+      name: "hallelujah",
       artist: "Rufus Wainwright",
     }
   ]
@@ -95,18 +101,18 @@ tracks.each do |id, songs|
   songs.each do |song|
     Track.create!(
       playlist: playlist,
-      name: "#{song[:name]} - Normal",
+      name: "#{song[:name]}",
       artist: song[:artist],
       lofi: false,
-      url: "#{id}/#{song[:name]} - Normal.mp3",
+      url: "#{id}/#{song[:name]}.mp3",
       cover_art_url: show.poster_url
     )
     Track.create!(
       playlist: playlist,
-      name: "#{song[:name]} - Lofi",
+      name: "#{song[:name]}_lofi",
       artist: song[:artist],
       lofi: true,
-      url: "#{id}/#{song[:name]} - Lofi.mp3",
+      url: "#{id}/#{song[:name]}_lofi.mp3",
       cover_art_url: show.poster_url
     )
     puts "Création (Track): #{song[:name]}"
