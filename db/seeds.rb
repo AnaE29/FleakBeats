@@ -1,8 +1,13 @@
 require 'open-uri'
 require 'json'
 
+Track.destroy_all
+Playlist.destroy_all
+Show.destroy_all
+
+
 # ids = [916224, 372058, 671, 808, 22, 11, 8587, 85, 118340, 424694]
-ids = [22]
+ids = [808, 22]
 
 #Suzume 916224 DONE
 #Your name 372058
@@ -35,16 +40,16 @@ end
 # ids = [66732, 93405, 60574, 1399, 71446]
 ids = [93405]
 
-ids.each do |id|
-  serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
-  Show.create!(
-    name: serie['title'],
-    show_type: "tv",
-    tmdb_id: id,
-    poster_url: "https://image.tmdb.org/t/p/original#{serie['poster_path']}",
-  )
-  puts "Création (Serie): #{serie['name']}"
-end
+# ids.each do |id|
+#   serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
+#   Show.create!(
+#     name: serie['title'],
+#     show_type: "tv",
+#     tmdb_id: id,
+#     poster_url: "https://image.tmdb.org/t/p/original#{serie['poster_path']}",
+#   )
+#   puts "Création (Serie): #{serie['name']}"
+# end
 tracks = {
   22 => [
     {
@@ -65,6 +70,21 @@ tracks = {
     {
       name: "Pink Soldiers",
       artist: "Pink Soldiers"
+    }
+  ],
+  808 => [
+    {
+      name: "All Stars",
+      artist: "Smash Mouth"
+    }, {
+      name: "Holding Out For A Hero",
+      artist: "Smash Mouth",
+    }, {
+      name: "Im a Believer",
+      artist: "Smash Mouth",
+    }, {
+      name: "Hallelujah",
+      artist: "Rufus Wainwright",
     }
   ]
 }
