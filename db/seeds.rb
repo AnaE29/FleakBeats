@@ -43,7 +43,7 @@ ids = [93405]
 ids.each do |id|
   serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))
   Show.create!(
-    name: serie['title'],
+    name: serie['name'],
     show_type: "tv",
     tmdb_id: id,
     poster_url: "https://image.tmdb.org/t/p/original#{serie['poster_path']}",
