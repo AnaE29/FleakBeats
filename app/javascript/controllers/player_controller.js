@@ -2,19 +2,29 @@ import { Controller } from "@hotwired/stimulus"
 import Amplitude from "amplitudejs"
 // Connects to data-controller="player"
 export default class extends Controller {
-  static targets = ["url", "show"]
+  static targets = ["show", "url"]
   // pour Rudy
-///  static values = { songs: Array }
+  ///  static values = { songs: Array }
   connect() {
-    console.log(this.showTarget.dataset.amplitudePlaylist);
 
-    let songs = []
-    this.urlTargets.forEach(song => {
-      songs.push({"url": song.attributes.src.value, "amplitude-playlist": this.showTarget.dataset.amplitudePlaylist})
+
+    // "amplitude-playlist": this.showTarget.dataset.amplitudePlaylist}
+
+
+
+
+
+    let playlists = {};
+    this.showTargets.forEach((showTarget) => {
+      const urls = Array.from(showTarget.querySelectorAll('[data-player-target="url"]')).map((url) => { return {"url": url.src, "artist": "TEST"}} );
+      const playlistName = showTarget.dataset.playlistName;
+      playlists[playlistName] = {"songs": urls };
     });
 
-   /*  const url = this.squidgameTarget.src
-    console.log(url) */
+
+
+    /*  const url = this.squidgameTarget.src
+      console.log(url) */
 
     // ------------------------- GESTION SWITCH THEME ------------------------------
 
@@ -42,40 +52,46 @@ export default class extends Controller {
 
 
     //----------- TODO : Récupération du lien MP3 pour le lecteur --------------
-    let audioElement = document.querySelector('audio');
+
 
     //--------------------------------------------------------------------------
     Amplitude.init({
-        "bindings": {
-            37: 'prev',
-            39: 'next',
-            32: 'play_pause'
-        },
-        "callbacks": {
-            timeupdate: function(){
-                let percentage = Amplitude.getSongPlayedPercentage();
+      "bindings": {
+        37: 'prev',
+        39: 'next',
+        32: 'play_pause'
+      },
+      "callbacks": {
+        timeupdate: function(){
+          let percentage = Amplitude.getSongPlayedPercentage();
 
-                if( isNaN( percentage ) ){
-                    percentage = 0;
-                }
+          if( isNaN( percentage ) ){
+              percentage = 0;
+          }
 
-                /**
-                 * Massive Help from: https://nikitahl.com/style-range-input-css
-                 */
-                let slider = document.getElementById('song-percentage-played');
-                slider.style.backgroundSize = percentage + '% 100%';
-            }
-        },
+          /**
+           * Massive Help from: https://nikitahl.com/style-range-input-css
+           */
+          let slider = document.getElementById('song-percentage-played');
+          slider.style.backgroundSize = percentage + '% 100%';
+        }
+      },
+      "songs": [
+        {"url": ""}
+      ],
+      // songs: playlists['shrek']['songs'],
 
-      // songs: this.songsValue,
+      playlists: playlists,
 
-
-
-        "songs": songs
     });
 
     window.onkeydown = function(e) {
         return !(e.keyCode == 32);
     };
-      }
+
+    console.log(playlists);
+
+
+
+  }
 }
