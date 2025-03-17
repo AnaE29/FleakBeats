@@ -16,9 +16,9 @@ export default class extends Controller {
 
     let playlists = {};
     this.showTargets.forEach((showTarget) => {
-      const urls = Array.from(showTarget.querySelectorAll('[data-player-target="url"]')).map((url) => { return {"url": url.src}} );
+      const urls = Array.from(showTarget.querySelectorAll('[data-player-target="url"]')).map((url) => { return {"url": url.src, "artist": "TEST"}} );
       const playlistName = showTarget.dataset.playlistName;
-      playlists[playlistName] = {"songs": urls};
+      playlists[playlistName] = {"songs": urls };
     });
 
 
@@ -79,16 +79,18 @@ export default class extends Controller {
       "songs": [
         {"url": ""}
       ],
-
       // songs: playlists['shrek']['songs'],
 
       playlists: playlists,
+
     });
 
     window.onkeydown = function(e) {
         return !(e.keyCode == 32);
     };
+
     console.log(playlists);
+
 
 
   }
