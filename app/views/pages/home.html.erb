@@ -1,10 +1,8 @@
 
 <%= render partial: 'shared/toggle_switch' %>
 
-<%= render partial: 'shared/dropdown_menu' %>
-
 <div class="show-container">
-  <section data-controller="player">
+  <section data-controller="player" class="flex">
     <% @shows.each do |show| %>
       <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist.tracks } %>
     <% end %>

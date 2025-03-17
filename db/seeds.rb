@@ -38,7 +38,7 @@ ids.each do |id|
 end
 
 # ids = [66732, 93405, 60574, 1399, 71446]
-ids = [93405]
+ids = [93405, 22, 808]
 
 ids.each do |id|
   serie = JSON.load(URI.open("https://tmdb.lewagon.com/tv/#{id}"))

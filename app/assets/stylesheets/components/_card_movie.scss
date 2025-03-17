@@ -1,9 +1,8 @@
 .show-card {
+  display: flex;
   width: 200px;
   height: 300px;
   perspective: 1000px;
-  position: relative;
-  cursor: pointer;
 }
 
 .show-card > .front,
@@ -31,3 +30,4 @@
 .show-card.flipped > .back {
   transform: rotateY(0deg);
 }
+
