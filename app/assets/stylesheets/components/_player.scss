@@ -1,8 +1,8 @@
 
 img {
   object-fit: cover;
-  width: 160px;
-  height: 160px;
+  min-width: 160px;;
+  max-height: 160px;
   border-radius: .5em;
 }
 
@@ -53,8 +53,8 @@ input[type="range"]::-ms-track {
 }
 
 div#song-saved.saved svg path{
-  fill: #38BDF8;
-  stroke: #38BDF8;
+  fill: red;
+  stroke: red;
 }
 
 div.amplitude-play-pause.amplitude-playing #pause-icon{
