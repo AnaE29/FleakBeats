@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
 
   def toggle
+    return unless user_signed_in?
     song_id = params[:song_id]
     favorite = current_user.favorites.find_by(track_id: Track.find_by(name: song_id).id)
 
@@ -15,6 +16,14 @@ class FavoritesController < ApplicationController
         render json: { status: 'error', errors: new_favorite.errors.full_messages }, status: :unprocessable_entity
       end
     end
+  end
+
+  def check
+    render json: {} unless user_signed_in?
+    song_id = params[:song_id]
+    track = Track.find_by(name: song_id)
+    favorite = current_user.favorites.find_by(track_id: track.id).nil?
+    render json: { favorite: !favorite }
   end
 
 end

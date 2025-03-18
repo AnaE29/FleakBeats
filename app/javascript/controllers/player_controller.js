@@ -6,10 +6,32 @@ export default class extends Controller {
 
   connect() {
     this.setAmplitude(false)
-    document.addEventListener("keydown", () => {
-      console.log(Amplitude);
+    document.querySelectorAll('#song-saved').forEach((button) => {
+      button.addEventListener('click', function(event) {
+        event.stopPropagation();
+        const track = Amplitude.getActiveSongMetadata().url.split('/').pop().split('.').shift().split('-').shift();
+        this.classList.toggle('saved');
 
-    })
+        const isFavorite = this.classList.contains('saved');
+
+        fetch('/favorites/toggle', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({ song_id: track, favorite: isFavorite })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Réponse du favorite controller:', data);
+        })
+        .catch(error => {
+          console.error(error);
+          this.classList.toggle('saved');
+        });
+      });
+    });
   }
 
   setAmplitude(isLofi) {
@@ -36,40 +58,10 @@ export default class extends Controller {
     });
 
 
-    // ---------------- TODO : Button Favorite ------------------------------------
 
     // const controller = this;
 
-    // document.querySelectorAll('#song-saved').forEach((button) => {
-    //   button.addEventListener('click', function(event) {
-    //     event.stopPropagation();
-    //     let track = controller.element.querySelector('[data-player-target="url"]').src
-    //     track = track.split('/').pop().split('.').shift().split('-').shift();
-    //     console.log(track);
-    //     this.classList.toggle('saved');
 
-    //     const isFavorite = this.classList.contains('saved');
-
-    //     fetch('/favorites/toggle', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    //       },
-    //       body: JSON.stringify({ song_id: track, favorite: isFavorite })
-    //     })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       console.log('Réponse du favorite controller:', data);
-    //     })
-    //     .catch(error => {
-    //       console.error(error);
-    //       this.classList.toggle('saved');
-    //     });
-    //   });
-    // });
-
-    // ---------------- !TODO : Button Favorite! ------------------------------------
 
 
     const test = Amplitude.init({
@@ -79,13 +71,28 @@ export default class extends Controller {
         32: 'play_pause',
       },
       "callbacks": {
-        timeupdate: function(){
+        // song_change: function() {
+        //   let track = Amplitude.getActiveSongMetadata().url.split('/').pop().split('.').shift().split('-').shift();
+        //   fetch(`/favorites/check?song_id=${track}`, {
+        //     headers: { 'Content-Type': 'application/json' }
+        //   })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //       let button = document.getElementById('song-saved');
+        //       if (data.favorite) {
+        //         console.log("good");
+        //         button.classList.toggle('saved');
+        //       }
+        //     })
+        //     .catch(error => {
+        //       console.error("Erreur lors de la vérification du favori: ", error);
+        //     });
+        // },
+        timeupdate: function() {
           let percentage = Amplitude.getSongPlayedPercentage();
-
-          if( isNaN( percentage ) ){
-              percentage = 0;
+          if (isNaN(percentage)) {
+            percentage = 0;
           }
-
           let slider = document.getElementById('song-percentage-played');
           slider.style.backgroundSize = percentage + '% 100%';
         }
