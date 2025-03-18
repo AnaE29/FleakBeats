@@ -4,7 +4,7 @@
   height: 160px;
   transform-style: preserve-3d;
   transition: transform 0.6s;
-
+  margin: 200px;
 }
 .show-card.flipped {
   transform: translate(-50%, -50%) rotateY(180deg) ;
@@ -15,10 +15,7 @@
   height: 354px;
 }
 
-.flex {
-  display: flex;
-  align-items: center;
-}
+
 
 .show-card > .front,
 .show-card > .back {
