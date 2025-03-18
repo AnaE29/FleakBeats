@@ -28,6 +28,7 @@
     <%# TODO : AUDIO //  %>
       <% songs.each do |song| %>
         <%= audio_tag(song.url, data: { player_target: 'url'}) %>
+
         <div data-amplitude-info="artist" data-artist="<%= song.artist %>"></div>
       <% end %>
 
