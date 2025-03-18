@@ -1,7 +1,9 @@
-<div data-controller="toggle-music" class="flex items-center absolute top-1 left-6 size-16">
+<div class="flex items-center" id="switch">
     <label for="toggleThree" class="flex items-center cursor-pointer select-none text-dark dark:text-white">
         <div class="relative">
-          <input type="checkbox" id="toggleThree" class="peer sr-only" data-action="toggle-music#switch">
+          <input type="checkbox" id="toggleThree" class="peer sr-only" data-action="player#switch">
+
+
           <div class="block h-8 w-14 rounded-full bg-gray-300 dark:bg-dark-2"></div>
           <div class="absolute left-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white transition peer-checked:translate-x-full peer-checked:bg-primary">
               <span class="hidden active">
@@ -18,3 +20,10 @@
         </div>
     </label>
 </div>
+
+
+<%# <div data-controller="track-toggle">
+  <label class="switch">
+    <input type="checkbox" data-action="change->track-toggle#toggle">
+    <span class="slider"></span>
+  </label> %>

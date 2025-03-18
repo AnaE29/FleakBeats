@@ -5,25 +5,10 @@ export default class extends Controller {
   static targets = ["show", "url"]
 
   connect() {
-
-    let playlists = {};
-    this.showTargets.forEach((showTarget) => {
-      const urls = Array.from(showTarget.querySelectorAll('[data-player-target="url"]')).map((url) =>  url.src );
-      const artists = Array.from(showTarget.querySelectorAll('[data-amplitude-info="artist"]')).map((artist) =>  artist.dataset.artist);
-      const songs = urls.map((value, index) => { return { "url": value, "artist": artists[index] } });
-      const playlistName = showTarget.dataset.playlistName;
-      playlists[playlistName] = {"songs": songs };
-    });
-
-
-    // ---------------- TODO : Button Favorite ------------------------------------
-
-    const controller = this;
-
-    document.querySelectorAll('#song-saved').forEach((button) => {
+    this.setAmplitude(false)
+    document.querySelectorAll('.heart').forEach((button) => {
       button.addEventListener('click', function(event) {
-        event.stopPropagation();
-        var track = Amplitude.getActiveSongMetadata().url.split('/').pop().split('.').shift().split('-').shift();
+        const track = Amplitude.getActiveSongMetadata().url.split('/').pop().split('.').shift().split('-').shift();
         this.classList.toggle('saved');
 
         const isFavorite = this.classList.contains('saved');
@@ -46,8 +31,36 @@ export default class extends Controller {
         });
       });
     });
+  }
 
-    // ---------------- !TODO : Button Favorite! ------------------------------------
+  setAmplitude(isLofi) {
+    let playlistsLofi = {}
+    let playlistsNormal = {}
+    this.showTargets.forEach((showTarget) => {
+      const urls = Array.from(showTarget.querySelectorAll('[data-player-target="url"]')).map((url) =>  url.src );
+
+      //-------------RECUPERATION DES URLS LOFI -------------------------------
+
+      const urlsLofi = urls.filter(url => url.includes("lofi"));
+      const urlsNormal = urls.filter(url => !url.includes("lofi"));
+      //------------------------------------------------------------------------
+
+
+      const artists = Array.from(showTarget.querySelectorAll('[data-amplitude-info="artist"]')).map((artist) =>  artist.dataset.artist);
+
+      const songsLofi = urlsLofi.map((value, index) => { return { "url": value, "artist": artists[index] } });
+      const songsNormal = urlsNormal.map((value, index) => { return { "url": value, "artist": artists[index] } });
+      const playlistName = showTarget.dataset.playlistName;
+      playlistsLofi[playlistName] = {"songs": songsLofi };
+      playlistsNormal[playlistName] = {"songs": songsNormal };
+
+    });
+
+
+
+
+    // const controller = this;
+
 
 
     Amplitude.init({
@@ -58,16 +71,22 @@ export default class extends Controller {
       },
       "callbacks": {
         song_change: function() {
-          let track = Amplitude.getActiveSongMetadata().url.split('/').pop().split('.').shift().split('-').shift();
-          fetch(`/favorites/check?song_id=${track}`, {
+          let url = Amplitude.getActiveSongMetadata().url
+          const trackName = url.split('/').pop().split('.').shift().split('-').shift()
+          fetch(`/favorites/check?song_id=${trackName}`, {
             headers: { 'Content-Type': 'application/json' }
           })
             .then(response => response.json())
             .then(data => {
-              let button = document.getElementById('song-saved');
+              let button = document.getElementById(Amplitude.getConfig().active_playlist);
+              console.log(button);
+
               if (data.favorite) {
-                console.log("good");
-                button.classList.toggle('saved');
+                if (!button.classList.contains('saved')) {
+                  button.classList.toggle('saved');
+                }
+              } else {
+                button.classList.remove('saved')
               }
             })
             .catch(error => {
@@ -88,7 +107,7 @@ export default class extends Controller {
       ],
       // songs: playlists['shrek']['songs'],
 
-      playlists: playlists,
+      playlists: isLofi ? playlistsLofi : playlistsNormal,
 
     });
 
@@ -96,14 +115,14 @@ export default class extends Controller {
         return !(e.keyCode == 32);
     };
 
-    console.log(playlists);
-
-
-
-
   }
-  // autoplay() {
-  //   this.showTarget.querySelector(".amplitude-play-pause").click();
 
-  // }
+  switch(event) {
+    Amplitude.stop()
+    const isChecked = event.target.checked;
+    const playlist = Amplitude.getConfig().active_playlist
+    const activeIndex = Amplitude.getConfig().playlists[Amplitude.getConfig().active_playlist].active_index
+    this.setAmplitude(isChecked)
+    Amplitude.skipTo( 0, activeIndex, playlist)
+  }
 }

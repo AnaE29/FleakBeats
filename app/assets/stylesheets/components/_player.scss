@@ -52,7 +52,7 @@ input[type="range"]::-ms-track {
   background: transparent;
 }
 
-div#song-saved.saved svg path{
+.saved svg path{
   fill: red;
   stroke: red;
 }

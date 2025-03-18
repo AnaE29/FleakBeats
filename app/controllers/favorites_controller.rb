@@ -1,7 +1,7 @@
 class FavoritesController < ApplicationController
-
   def toggle
     return unless user_signed_in?
+
     song_id = params[:song_id]
     favorite = current_user.favorites.find_by(track_id: Track.find_by(name: song_id).id)
 
@@ -19,9 +19,10 @@ class FavoritesController < ApplicationController
   end
 
   def check
-    render json: {} unless user_signed_in?
-    song_id = params[:song_id]
-    track = Track.find_by(name: song_id)
+    return unless user_signed_in?
+
+    name = params[:song_id]
+    track = Track.find_by(name: name)
     favorite = current_user.favorites.find_by(track_id: track.id).nil?
     render json: { favorite: !favorite }
   end
