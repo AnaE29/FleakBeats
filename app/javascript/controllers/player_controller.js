@@ -18,10 +18,35 @@ export default class extends Controller {
 
     // ---------------- TODO : Button Favorite ------------------------------------
 
+    const controller = this;
 
+    document.querySelectorAll('#song-saved').forEach((button) => {
+      button.addEventListener('click', function(event) {
+        event.stopPropagation();
+        let track = controller.element.querySelector('[data-player-target="url"]').src
+        track = track.split('/').pop().split('.').shift().split('-').shift();
+        console.log(track);
+        this.classList.toggle('saved');
 
-    document.getElementById('song-saved').addEventListener('click', function(){
-      document.getElementById('song-saved').classList.toggle('saved');
+        const isFavorite = this.classList.contains('saved');
+
+        fetch('/favorites/toggle', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({ song_id: track, favorite: isFavorite })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Réponse du favorite controller:', data);
+        })
+        .catch(error => {
+          console.error(error);
+          this.classList.toggle('saved');
+        });
+      });
     });
 
     // ---------------- !TODO : Button Favorite! ------------------------------------
