@@ -13,9 +13,14 @@
   </head>
 
   <body class="min-h-screen flex flex-col" data-controller="change-background" id="bg1" >
+    <div class="crt_lines"></div>
+      <%= yield %>
 
-    <%= yield %>
+      <%= render "shared/flashes" %>
 
-    <%= render "shared/flashes" %>
+    <div data-controller="textanimation">
+     <p class="text_home" data-textanimation-target="text">Cliquez sur une carte pour écouter la playlist</p>
+
+    </div>
   </body>
 </html>
