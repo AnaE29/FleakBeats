@@ -7,7 +7,7 @@
       <img src="<%= show.poster_url %>" alt="<%= show.name %>" class="show-poster">
     </div>
     <div class="back">
-      <div data-player-target="show" data-playlist-name="<%= show.playlist.name %>">
+      <div data-player-target="show" data-playlist-name="<%= show.playlist ? show.playlist.name : nil %>">
         <%= render partial: "shared/player", locals: { show: show, songs: songs } %>
       </div>
     </div>

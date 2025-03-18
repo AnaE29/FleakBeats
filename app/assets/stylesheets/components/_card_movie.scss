@@ -15,6 +15,11 @@
   height: 354px;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
 .show-card > .front,
 .show-card > .back {
   position: absolute;
