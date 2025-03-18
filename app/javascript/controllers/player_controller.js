@@ -6,9 +6,8 @@ export default class extends Controller {
 
   connect() {
     this.setAmplitude(false)
-    document.querySelectorAll('#song-saved').forEach((button) => {
+    document.querySelectorAll('.heart').forEach((button) => {
       button.addEventListener('click', function(event) {
-        event.stopPropagation();
         const track = Amplitude.getActiveSongMetadata().url.split('/').pop().split('.').shift().split('-').shift();
         this.classList.toggle('saved');
 
@@ -59,35 +58,41 @@ export default class extends Controller {
 
 
 
+
     // const controller = this;
 
 
 
-
-    const test = Amplitude.init({
+    Amplitude.init({
       "bindings": {
         37: 'prev',
         39: 'next',
         32: 'play_pause',
       },
       "callbacks": {
-        // song_change: function() {
-        //   let track = Amplitude.getActiveSongMetadata().url.split('/').pop().split('.').shift().split('-').shift();
-        //   fetch(`/favorites/check?song_id=${track}`, {
-        //     headers: { 'Content-Type': 'application/json' }
-        //   })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //       let button = document.getElementById('song-saved');
-        //       if (data.favorite) {
-        //         console.log("good");
-        //         button.classList.toggle('saved');
-        //       }
-        //     })
-        //     .catch(error => {
-        //       console.error("Erreur lors de la vérification du favori: ", error);
-        //     });
-        // },
+        song_change: function() {
+          let url = Amplitude.getActiveSongMetadata().url
+          const trackName = url.split('/').pop().split('.').shift().split('-').shift()
+          fetch(`/favorites/check?song_id=${trackName}`, {
+            headers: { 'Content-Type': 'application/json' }
+          })
+            .then(response => response.json())
+            .then(data => {
+              let button = document.getElementById(Amplitude.getConfig().active_playlist);
+              console.log(button);
+
+              if (data.favorite) {
+                if (!button.classList.contains('saved')) {
+                  button.classList.toggle('saved');
+                }
+              } else {
+                button.classList.remove('saved')
+              }
+            })
+            .catch(error => {
+              console.error("Erreur lors de la vérification du favori: ", error);
+            });
+        },
         timeupdate: function() {
           let percentage = Amplitude.getSongPlayedPercentage();
           if (isNaN(percentage)) {
