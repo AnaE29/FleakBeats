@@ -4,6 +4,7 @@ require 'json'
 Track.destroy_all
 Playlist.destroy_all
 Show.destroy_all
+Favorite.destroy_all
 
 
 ids = [916224, 372058, 671, 808, 22, 11, 8587, 85, 118340, 424694]
