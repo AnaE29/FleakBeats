@@ -16,25 +16,9 @@ export default class extends Controller {
     });
 
 
-
-    /*  const url = this.squidgameTarget.src
-      console.log(url) */
-
-    // ------------------------- GESTION SWITCH THEME ------------------------------
-
-    // let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-
-    // if( theme == 'dark' ){
-    //     document.documentElement.classList.add('dark')
-    // }
-
-    // document.getElementById('dark-mode-toggle').addEventListener('click', function(){
-    //   document.documentElement.classList.toggle('dark')
-    // });
-    // ------------------------- !GESTION SWITCH THEME! ------------------------------
-
-
     // ---------------- TODO : Button Favorite ------------------------------------
+
+
 
     document.getElementById('song-saved').addEventListener('click', function(){
       document.getElementById('song-saved').classList.toggle('saved');
@@ -78,8 +62,8 @@ export default class extends Controller {
 
 
 
-  }
 
+  }
   // autoplay() {
   //   this.showTarget.querySelector(".amplitude-play-pause").click();
 

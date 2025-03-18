@@ -1,10 +1,8 @@
 
 <%= render partial: 'shared/toggle_switch' %>
 
-<div class="show-container">
-  <section data-controller="player" class="flex">
+  <section data-controller="player" class="flex" style:"perspective: 1000px;">
     <% @shows.each do |show| %>
       <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist ? show.playlist.tracks : [] } %>
     <% end %>
 </section>
-</div>
