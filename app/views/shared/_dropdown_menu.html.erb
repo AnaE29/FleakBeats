@@ -43,15 +43,15 @@
 
       <div id="dropdownHover"
         class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-48 dark:bg-gray-700"
-        data-action="mouseenter->dropdown#show mouseleave->dropdown#hide"
-      >
+        data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
 
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-          <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Titre 1</li>
-          <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Titre 2</li>
-          <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Titre 3</li>
-          <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Titre 4</li>
-        </ul>
+        <% unless @favorites.empty? %>
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+            <% @favorites.each do |favorite| %>
+              <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><%= favorite.track.name %></li>
+          <% end %>
+          </ul>
+        <% end %>
       </div>
     </div>
   </div>
