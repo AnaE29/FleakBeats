@@ -46,11 +46,10 @@
         data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
 
         <% unless @favorites.empty? %>
-          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-            <% @favorites.each do |favorite| %>
-              <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><%= "#{favorite.track.playlist.name} - #{favorite.track.name.gsub("_", " ").titleize}" %></li>
-          <% end %>
-          </ul>
+          <%= turbo_stream_from "favorites_#{current_user.id}" %>
+          <div id="favorites">
+            <%= render "shared/favorites", favorites: @favorites %>
+          </div>
         <% end %>
       </div>
     </div>
