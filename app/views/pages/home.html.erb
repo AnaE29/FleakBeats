@@ -1,7 +1,8 @@
-
-<%= render partial: 'shared/navbar' %>
-  <section data-controller="player" class="jackets">
+<section data-controller="player">
+  <%= render partial: 'shared/navbar' %>
+  <div class="jackets">
     <% @shows.each do |show| %>
       <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist ? show.playlist.tracks : [] } %>
     <% end %>
+  </div>
 </section>
