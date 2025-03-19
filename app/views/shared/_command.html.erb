@@ -1,0 +1,38 @@
+<div data-controller="command" class="">
+
+
+  <button id="commandHoverButton"
+    class="text-white  bg-transparent hover:bg-white-600 focus:ring-4 focus:outline-none focus:ring-white-300 font-large rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+    type="button"
+    data-action="mouseover->command#show mouseleave->command#hide">
+
+
+    <i class="fa-solid fa-question text-lg"></i>
+
+  </button>
+
+
+
+
+
+  <div id="commandHover"
+    class="z-9 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-48 dark:bg-gray-700 absolute"
+    data-action="mouseenter->command#show mouseleave->command#hide"
+  >
+
+
+      <ul class="py-2 text-lg text-gray-700 dark:text-gray-200 drop-shadow-[3px_3px_10px_rgb(55,255,0)]">
+        <li class="block px-4 py-2">Lecture/Pause : Barre Espace</li>
+        <li class="block px-4 py-2">Titre Précédent : Flèche Gauche</li>
+        <li class="block px-4 py-2">Titre Suivant : Flèche Droite</li>
+        <li class="block px-4 py-2">Changer Fond d'écran : Flèche Haut/Bas</li>
+      </ul>
+
+  </div>
+
+
+
+
+
+
+</div>

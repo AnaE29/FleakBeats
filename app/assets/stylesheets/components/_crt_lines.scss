@@ -1,5 +1,5 @@
 .crt_lines {
-  background-image: asset_url("lines.jpg");
+  background-image: asset_url("lines.jpg") !important;
   position: absolute;
   top: 0;
   left: 0;
@@ -8,6 +8,21 @@
   z-index: 10;
   background-size: 8px, auto;
   mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.5;
+
+}
+
+.crt_lines_menu {
+  background-image: asset_url("lines.jpg");
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background-size: 8px, auto;
+  mix-blend-mode: multiply;
   pointer-events: none;
   opacity: 0.5;
 }

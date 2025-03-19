@@ -3,27 +3,32 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="textanimation"
 export default class extends Controller {
   static targets = ["text"]
+
   connect() {
     this.animateText()
+  }
 
-    }
+  animateText() {
+    let delay = 100;
+    let delay_start = 700;
+    this.textTarget.textContent = "";
+    let letters = "Cliquez sur une carte pour écouter la playlist".split("");
 
-    animateText() {
-      let delay = 100;
-      let delay_start = 400;
+    letters.forEach((letter, index) => {
+      setTimeout(() => {
+        this.textTarget.textContent += letter;
+      }, delay_start + delay * index);
+    });
 
-      let contents = this.textTarget.textContent.trim();
-      this.textTarget.textContent = "";
-      let letters = contents.split("");
 
-      this.textTarget.style.visibility = "visible";
+
+    setTimeout(() => {
       letters.forEach((letter, index) => {
         setTimeout(() => {
-          this.textTarget.textContent += letter;
+          letters.pop()
+          this.textTarget.textContent = letters.join('')
         }, delay_start + delay * index);
-      });
-      delay_start += delay * letters.length;
-    }
-
-
+      })
+    }, 30000);
   }
+}

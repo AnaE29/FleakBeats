@@ -8,3 +8,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body {
+  font-family: "VT323";
+  &.blured {
+    backdrop-filter: blur(20px);
+  }
+}
