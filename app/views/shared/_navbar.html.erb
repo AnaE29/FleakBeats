@@ -1,20 +1,24 @@
-<nav class="bg-black shadow flex justify-between items-center h-28">
+<nav class="shadow flex justify-between items-center h-28">
 
-  <div>
+  <div class="">
     <%= render partial: 'shared/dropdown_menu' %>
   </div>
 
 
-  <div class="flex items-center">
+  <div class="flex mx-2">
+    <div class="mx-2">
+      <%= render partial: 'shared/command' %>
+    </div>
+    <div class="mx-2">
         <%= render partial: 'shared/toggle_switch' %>
+    </div>
 
-        
-      <div class="hidden md:flex md:items-center md:space-x-4">
-        <% if user_signed_in? %>
-          <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-100 bg-transparent" %>
-        <% else %>
-          <%= link_to "Connexion", new_user_session_path, class: "px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-gray-100 bg-transparent" %>
-        <% end %>
-      </div>
+    <div class="mx-3">
+      <% if user_signed_in? %>
+        <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-text block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-100 bg-transparent" %>
+      <% else %>
+        <%= link_to "Connexion", new_user_session_path, class: "nav-text rounded-md text-base font-medium text-gray-300 hover:text-gray-100 bg-transparent" %>
+      <% end %>
+    </div>
   </div>
 </nav>
