@@ -1,8 +1,20 @@
+
+
 <section data-controller="player">
   <%= render partial: 'shared/navbar' %>
-  <div class="jackets">
-    <% @shows.each do |show| %>
-      <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist ? show.playlist.tracks : [] } %>
-    <% end %>
+
+  <!-- Player en haut -->
+  <div id="focus" class="" data-show-target="focus"></div>
+
+  <!-- Scroll infini en bas -->
+  <div class="jackets scroller" data-direction="left" data-speed="slow">
+    <div class="scroller_inner">
+      <% @shows.each do |show| %>
+        <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist ? show.playlist.tracks : [] } %>
+      <% end %>
+    </div>
   </div>
 </section>
+
+
+<%# <div class="jackets scroller" data-direction="right" data-speed="slow"> %>
