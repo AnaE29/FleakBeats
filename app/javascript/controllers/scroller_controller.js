@@ -1,10 +1,9 @@
-const scrollers = document.querySelectorAll(".scroller");
-if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-  addAnimation();
-}
+import { Controller } from "@hotwired/stimulus"
 
-function addAnimation() {
-  scrollers.forEach((scroller) => {
+// Connects to data-controller="scroller"
+export default class extends Controller {
+  connect() {
+    const scroller = this.element;
     scroller.setAttribute('data-animated', true);
 
     const scrollerInner = scroller.querySelector(".scroller_inner");
@@ -14,6 +13,6 @@ function addAnimation() {
       const duplicatedItem = item.cloneNode(true);
       duplicatedItem.setAttribute("aria-hidden", true);
       scrollerInner.appendChild(duplicatedItem);
-    })
-  });
+    });
+  }
 }
