@@ -4,7 +4,7 @@
   height: 160px;
   transform-style: preserve-3d;
   transition: transform 0.6s;
-  margin: 200px;
+  margin: 10px;
 }
 .show-card.flipped {
   transform: translate(-50%, -50%) rotateY(180deg) ;
@@ -36,4 +36,12 @@
 .show-card > .back {
   transform: rotateY(180deg);
 
+}
+
+.jackets {
+  display: flex; /* Aligne horizontalement */
+  gap: 150px; /* Ajoute un petit espace entre les cartes */
+  justify-content: flex-start; /* Alignement à gauche */
+  overflow-x: auto; /* Permet de scroller horizontalement si besoin */
+  padding-top: 90px;
 }
