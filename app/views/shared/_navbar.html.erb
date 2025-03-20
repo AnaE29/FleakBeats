@@ -6,14 +6,14 @@
 
 
   <div class="flex mx-2">
-    <div class="mx-2">
+    <div class="mx-2 ">
       <%= render partial: 'shared/command' %>
     </div>
     <div class="flex mx-2">
         <%= render partial: 'shared/toggle_switch' %>
     </div>
 
-    <div class="mx-3">
+    <div class="mx-3 mx-3 flex items-center">
       <% if user_signed_in? %>
         <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-text block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-100 bg-transparent" %>
       <% else %>
