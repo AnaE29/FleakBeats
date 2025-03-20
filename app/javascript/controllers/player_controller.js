@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import Amplitude from "amplitudejs"
 
 export default class extends Controller {
-  static targets = ["show", "url"]
+  static targets = ["show", "url", "switch"]
 
   connect() {
     this.setAmplitude(false)
@@ -47,20 +47,15 @@ export default class extends Controller {
 
 
       const artists = Array.from(showTarget.querySelectorAll('[data-amplitude-info="artist"]')).map((artist) =>  artist.dataset.artist);
+      console.log(artists);
 
-      const songsLofi = urlsLofi.map((value, index) => { return { "url": value, "artist": artists[index] } });
-      const songsNormal = urlsNormal.map((value, index) => { return { "url": value, "artist": artists[index] } });
+      const songsLofi = urlsLofi.map((value, index) => { return { "url": value, "artist": artists[index * 2] } });
+      const songsNormal = urlsNormal.map((value, index) => { return { "url": value, "artist": artists[index * 2] } });
       const playlistName = showTarget.dataset.playlistName;
       playlistsLofi[playlistName] = {"songs": songsLofi };
       playlistsNormal[playlistName] = {"songs": songsNormal };
 
     });
-
-
-
-
-    // const controller = this;
-
 
 
     Amplitude.init({
@@ -122,10 +117,27 @@ export default class extends Controller {
     document.querySelector(".background_video").classList.toggle("blured")
     document.querySelector('.crt_lines').classList.toggle('hidden')
     Amplitude.stop()
-    const isChecked = event.target.checked;
-    const playlist = Amplitude.getConfig().active_playlist
-    const activeIndex = Amplitude.getConfig().playlists[Amplitude.getConfig().active_playlist].active_index
-    this.setAmplitude(isChecked)
-    Amplitude.skipTo( 0, activeIndex, playlist)
+    if (!(typeof event !== Boolean)) {
+      const isChecked = event.target.checked;
+      const playlist = Amplitude.getConfig().active_playlist
+      const activeIndex = Amplitude.getConfig().playlists[Amplitude.getConfig().active_playlist].active_index
+      this.setAmplitude(isChecked)
+      Amplitude.skipTo( 0, activeIndex, playlist)
+    }
+  }
+
+  startFavorite(event) {
+    Amplitude.stop()
+    const card = Array.from(document.querySelectorAll(`.id-${event.currentTarget.dataset.playlist}`))[0]
+    card.click()
+    const switcher = this.switchTarget
+    const isLofi = event.currentTarget.textContent.includes('Lofi')
+    if (switcher.checked != isLofi) {
+      this.switch(isLofi)
+    }
+    switcher.checked = isLofi
+    const index = event.currentTarget.dataset.index
+    const playlist = event.currentTarget.dataset.playlistName
+    Amplitude.skipTo(0, index, playlist)
   }
 }
