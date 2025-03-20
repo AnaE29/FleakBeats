@@ -1,16 +1,16 @@
-<div data-controller="dropdown" class="box-home">
+<div data-controller="dropdown">
   <button id="dropdownHoverButton"
-    class="text-white border border-white bg-transparent hover:bg-white-600 hover:text-black focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-white dark:focus:ring-white "
+    class="text-white bg-transparent focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-white "
     type="button"
     data-action="mouseover->dropdown#show mouseleave->dropdown#hide">
-    <i class="fa-solid fa-headphones "></i>
+    <i class="fa-solid fa-headphones text-2xl drop-shadow-[2px_2px_5px_rgb(55,255,0)]"></i>
   </button>
 
   <div id="dropdownHover"
-    class="z-9 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-48 dark:bg-gray-700 absolute drop-shadow-[2px_2px_6px_rgb(55,255,0)] top-14 left-[12px]"
+    class="z-9 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-60 dark:bg-gray-700 absolute drop-shadow-[2px_2px_6px_rgb(55,255,0)] top-14 left-[12px]"
     data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
 
-    <div data-controller="dropdown" class="p-3 w-48">
+    <div data-controller="dropdown" class="p-3 w-60">
       <label for="input-group-search" class="sr-only">Search</label>
       <div class="relative">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -19,7 +19,7 @@
           </svg>
         </div>
 
-        <input id="input-group-search" type="search" class="block w-full p-2 ps-10 text-xl text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
+        <input id="input-group-search" type="search" class="block w-full p-2 ps-10 text-2xl text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
           placeholder="Film ou série" data-action="keyup->dropdown#filter"/>
 
 <!--
@@ -39,7 +39,7 @@
     <% if user_signed_in? %>
     <div data-controller="dropdown" class="tset">
       <button id="dropdownHoverButton"
-        class="flex justify-between w-full text-white bg-white-700 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-xl px-5 py-2.5 text-center items-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
+        class="flex justify-between w-full text-white bg-white-700 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-2xl px-5 py-2.5 text-center items-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
         type="button"
         data-action="mouseover->dropdown#show mouseleave->dropdown#hide">
           <span>Favoris </span>
@@ -48,7 +48,7 @@
     <% end %>
 
     <div id="dropdownHover"
-      class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-48 dark:bg-gray-700"
+      class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-60 dark:bg-gray-700"
       data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
 
       <% if user_signed_in? %>

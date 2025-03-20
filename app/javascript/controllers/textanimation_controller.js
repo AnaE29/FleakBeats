@@ -12,7 +12,7 @@ export default class extends Controller {
     let delay = 100;
     let delay_start = 700;
     this.textTarget.textContent = "";
-    let letters = "Cliques sur une carte pour écouter la playlist".split("");
+    let letters = "Clique sur une carte pour écouter la playlist".split("");
 
     letters.forEach((letter, index) => {
       setTimeout(() => {

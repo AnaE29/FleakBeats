@@ -16,26 +16,26 @@
 
 
   <div id="commandHover"
-    class="z-9 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-52 dark:bg-gray-700 absolute"
+    class="z-9 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-64 dark:bg-gray-700 absolute"
     data-action="mouseenter->command#show mouseleave->command#hide"
   >
 
 
       <ul class="py-2 text-lg text-gray-700 dark:text-gray-200 drop-shadow-[3px_3px_10px_rgb(55,255,0)]">
-        <li class="block px-4 py-2 flex justify-between items-center">Play/Pause : <%= render_icon("space_bar", size: 54) %></li>
-        <li class="block px-4 py-2 flex items-center space-x-2 justify-between items-center">
+        <li class="block px-4 py-2 flex gap-x-3 items-center text-2xl">Play/Pause : <%= render_icon("space_bar", size: 58) %></li>
+        <li class="block px-4 py-2 flex items-center space-x-2 gap-x-3 items-center text-2xl">
           Préc./Suiv. :
-          <%= render_icon("arrow_left", size: 26) %>
-          <%= render_icon("arrow_right", size: 26) %>
+          <%= render_icon("arrow_left", size: 30) %>
+          <%= render_icon("arrow_right", size: 30) %>
         </li>
-        <li class="block px-4 py-2 flex items-center space-x-2 justify-between items-center">
+        <li class="block px-4 py-2 flex items-center space-x-2 gap-x-3 items-center text-2xl">
           Ambiance :
-          <%= render_icon("arrow_up", size: 26) %>
-          <%= render_icon("arrow_down", size: 26) %>
+          <%= render_icon("arrow_up", size: 30) %>
+          <%= render_icon("arrow_down", size: 30) %>
         </li>
-        <li class="block px-4 py-2 flex justify-between items-center">Normal/Lofi :
-        <i class="fa-solid fa-toggle-off text-2xl"></i>
-        <i class="fa-solid fa-toggle-on text-2xl"></i>
+        <li class="block px-4 py-2 flex gap-x-3 items-center text-2xl">Normal/Lofi :
+        <i class="fa-solid fa-toggle-off text-3xl"></i>
+        <i class="fa-solid fa-toggle-off text-3xl scale-x-[-1]"></i>
         </li>
       </ul>
 
