@@ -1,13 +1,13 @@
-<div data-controller="dropdown">
+<div data-controller="dropdown" class="box-home">
   <button id="dropdownHoverButton"
-    class="text-white border border-white bg-transparent hover:bg-white-600 hover:text-black focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-white dark:focus:ring-white mx-3"
+    class="text-white border border-white bg-transparent hover:bg-white-600 hover:text-black focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-white dark:focus:ring-white "
     type="button"
     data-action="mouseover->dropdown#show mouseleave->dropdown#hide">
-    <i class="fa-solid fa-headphones"></i>
+    <i class="fa-solid fa-headphones "></i>
   </button>
 
   <div id="dropdownHover"
-    class="z-9 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-48 dark:bg-gray-700 absolute drop-shadow-[3px_3px_10px_rgb(55,255,0)]"
+    class="z-9 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-48 dark:bg-gray-700 absolute drop-shadow-[3px_3px_10px_rgb(55,255,0)] ml-3"
     data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
 
     <div data-controller="dropdown-search" class="p-3 w-48">
@@ -31,7 +31,7 @@
     <% if user_signed_in? %>
     <div data-controller="dropdown" class="tset">
     <button id="dropdownHoverButton"
-      class="flex justify-between w-full text-white bg-white-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
+      class="flex justify-between w-full text-white bg-white-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center items-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
       type="button"
       data-action="mouseover->dropdown#show mouseleave->dropdown#hide">
         <span>Favoris </span>
