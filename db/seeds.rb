@@ -156,3 +156,5 @@ tracks.each do |id, songs|
     puts "Création (Track): #{song[:name]}"
   end
 end
+
+User.create!(email: "test@test.com", password: "password")
