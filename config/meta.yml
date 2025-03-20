@@ -1,0 +1,6 @@
+# config/meta.yml
+meta_product_name: "FleakBeats"
+meta_title: "FleakBeats - Le meilleur endroit pour écouter de la musique"
+meta_description: "Découvrez une plateforme de streaming musicale innovante et intuitive."
+meta_image: "cover.png" # Doit être dans `app/assets/images/`
+twitter_account: "@fleakbeats" # Nécessaire pour les Twitter Cards
