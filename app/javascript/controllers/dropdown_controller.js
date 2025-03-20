@@ -38,7 +38,7 @@ export default class extends Controller {
 
           div.textContent = show.name;
           console.log(div.textContent);
-          div.classList.add("autocomplete-item", "p-2", "cursor-pointer", "text-red-500");
+          div.classList.add("autocomplete-item", "p-2", "cursor-pointer", "text-black", "text-lg", "bg-white", "hover:bg-lime-500");
           div.addEventListener("click", () => {
             event.target.value = show.name;
             this.resultsTarget.innerHTML = "";
