@@ -4,27 +4,21 @@ export default class extends Controller {
   connect() {
     const body = document.querySelector(`body`);
     let count = 1;
-    const max = 6;
+    const max = 3;
     document.addEventListener("keyup", (event) => {
       if (event.key === "ArrowDown") {
+        console.log(document.querySelector(`#bg${count}`));
+        document.querySelector(`#bg${count}`).classList.toggle('hidden')
         count -= 1
         if (count === 0) count = max
-        body.setAttribute("id", `bg${count}`)
+        document.querySelector(`#bg${count}`).classList.toggle('hidden')
+        body.setAttribute("id", `background_${count}`)
       } else if (event.key === "ArrowUp") {
+        document.querySelector(`#bg${count}`).classList.toggle('hidden')
         count += 1
         if (count === (max + 1)) count = 1
-        body.setAttribute("id", `bg${count}`)
+        document.querySelector(`#bg${count}`).classList.toggle('hidden')
       }
     })
   }
 }
-
-/* const changeBackground = (event) => {
-  if (event.key === "up") {
-    moveBackground(1);
-  } else if (event.key === "down") {
-    moveBackground(2);
-  }
-};
-
-document.addEventListener("keyup", changeBackground); */

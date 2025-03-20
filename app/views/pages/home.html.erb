@@ -1,7 +1,9 @@
 
 
-<section data-controller="player">
+<section data-controller="player" >
+
   <%= render partial: 'shared/navbar' %>
+
 
   <!-- Player en haut -->
   <div id="focus" class="" data-show-target="focus"></div>
@@ -13,6 +15,7 @@
         <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist ? show.playlist.tracks : [] } %>
       <% end %>
     </div>
+  </div>
   </div>
 </section>
 

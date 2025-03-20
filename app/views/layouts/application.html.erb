@@ -12,7 +12,12 @@
 
   </head>
 
-  <body class="min-h-screen flex flex-col" data-controller="change-background" id="bg1">
+  <body class="min-h-screen flex flex-col" data-controller="change-background">
+    <div class="background_video fixed">
+      <%= video_tag "background_1.mp4", autoplay: :autoplay, muted: true, controls: false, loop: :loop, id:"bg1" %>
+      <%= video_tag"background_3.mp4", autoplay: :autoplay, muted: true, controls: false, loop: :loop, id:"bg2", class:"hidden" %>
+      <%= video_tag"background_2.mp4", autoplay: :autoplay, muted: true, controls: false, loop: :loop, id:"bg3", class:"hidden" %>
+    </div>
     <div class="crt_lines"></div>
       <%= yield %>
 

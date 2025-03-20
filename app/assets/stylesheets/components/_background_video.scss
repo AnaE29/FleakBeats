@@ -1,0 +1,17 @@
+.background_video {
+  z-index: -10;
+  height: 100%;
+  min-width: 100vw;
+  top: 0;
+  bottom: 0;
+  left:0;
+  right: 0;
+
+  &.blured {
+    filter: blur(15px);
+  }
+
+  video {
+  min-width: 100vw;
+}
+}
