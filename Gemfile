@@ -79,5 +79,4 @@ gem "simple_form", "~> 5.3"
 
 gem "simple_form-tailwind", "~> 0.1.2"
 gem "foreman", "~> 0.88.1"
-gem "pg_search", "~> 2.3"
 gem "solid_cable"
