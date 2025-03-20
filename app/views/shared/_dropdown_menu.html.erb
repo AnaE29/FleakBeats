@@ -10,7 +10,7 @@
     class="z-9 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-48 dark:bg-gray-700 absolute drop-shadow-[3px_3px_10px_rgb(55,255,0)] ml-3"
     data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
 
-    <div data-controller="dropdown-search" class="p-3 w-48">
+    <div data-controller="dropdown" class="p-3 w-48">
       <label for="input-group-search" class="sr-only">Search</label>
       <div class="relative">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -19,12 +19,18 @@
           </svg>
         </div>
 
+        <input id="input-group-search" type="search" class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
+          placeholder="Film ou une série" data-action="keyup->dropdown#filter"/>
+
+<!--
         <%= simple_form_for :search, url: root_path, method: :get, html: { class: "relative" } do |f| %>
           <%= f.input :query, label: false, placeholder: "Film ou une série",
-                      class: "block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
-                      data: { action: "input->dropdown-search#filter" } %>
+                      class: "block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50",
+                      data: { action: "keyup->dropdown#teste" } %>
           <%= f.submit "Rechercher", class: "hidden" %>
         <% end %>
+        -->
+        <div data-dropdown-target="results" class="autocomplete-results absolute z-10 bg-white shadow-md"></div>
       </div>
     </div>
 
