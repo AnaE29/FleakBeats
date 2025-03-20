@@ -8,10 +8,10 @@
   right: 0;
 
   &.blured {
-    filter: blur(15px);
+    filter: blur(12px);
   }
 
   video {
-  min-width: 100vw;
-}
+    min-width: 100vw;
+  }
 }

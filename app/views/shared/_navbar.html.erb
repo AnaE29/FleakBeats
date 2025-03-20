@@ -1,6 +1,6 @@
 <nav class="shadow flex justify-between items-center h-20">
 
-  <div class="">
+  <div class="ml-3">
     <%= render partial: 'shared/dropdown_menu' %>
   </div>
 
@@ -13,7 +13,8 @@
         <%= render partial: 'shared/toggle_switch' %>
     </div>
 
-    <div class="mx-3 mx-3 flex items-center">
+    <div class="mx-3 flex items-center">
+
       <% if user_signed_in? %>
         <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-text block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-gray-100 bg-transparent" %>
       <% else %>

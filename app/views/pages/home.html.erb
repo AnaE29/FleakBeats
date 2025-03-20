@@ -18,7 +18,7 @@
 
 
     <!-- Scroll à droite -->
-    <div class="jackets scroller scroller-right" data-direction="right" data-speed="slow" data-controller="scroller">
+    <div class="jackets scroller scroller-right" data-direction="left" data-speed="slow" data-controller="scroller">
       <div class="scroller_inner">
         <% @shows.shuffle.each do |show| %>
           <%= render partial: 'shared/show_card', locals: { show: show, songs: show.playlist ? show.playlist.tracks : [] } %>

@@ -2,7 +2,9 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    const body = document.querySelector(`body`);
+    document.querySelectorAll('video').forEach( (video) => {
+      video.playbackRate = 0.8
+    })
     let count = 1;
     const max = 3;
     document.addEventListener("keyup", (event) => {
@@ -12,7 +14,6 @@ export default class extends Controller {
         count -= 1
         if (count === 0) count = max
         document.querySelector(`#bg${count}`).classList.toggle('hidden')
-        body.setAttribute("id", `background_${count}`)
       } else if (event.key === "ArrowUp") {
         document.querySelector(`#bg${count}`).classList.toggle('hidden')
         count += 1
