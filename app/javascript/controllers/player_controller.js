@@ -117,13 +117,19 @@ export default class extends Controller {
     document.querySelector(".background_video").classList.toggle("blured")
     document.querySelector('.crt_lines').classList.toggle('hidden')
     Amplitude.stop()
-    if (!(typeof event !== Boolean)) {
-      const isChecked = event.target.checked;
-      const playlist = Amplitude.getConfig().active_playlist
-      const activeIndex = Amplitude.getConfig().playlists[Amplitude.getConfig().active_playlist].active_index
-      this.setAmplitude(isChecked)
-      Amplitude.skipTo( 0, activeIndex, playlist)
+    let isChecked = Boolean
+    if (event === undefined) {
+      isChecked = true;
+    } else {
+      isChecked = event.target.checked;
     }
+    console.log(isChecked);
+
+    const playlist = Amplitude.getConfig().active_playlist
+    const activeIndex = Amplitude.getConfig().playlists[Amplitude.getConfig().active_playlist].active_index
+    this.setAmplitude(isChecked)
+    Amplitude.skipTo( 0, activeIndex, playlist)
+
   }
 
   startFavorite(event) {
@@ -132,8 +138,8 @@ export default class extends Controller {
     card.click()
     const switcher = this.switchTarget
     const isLofi = event.currentTarget.textContent.includes('Lofi')
-    if (switcher.checked != isLofi) {
-      this.switch(isLofi)
+    if (switcher.checked == !isLofi) {
+      this.switch()
     }
     switcher.checked = isLofi
     const index = event.currentTarget.dataset.index
