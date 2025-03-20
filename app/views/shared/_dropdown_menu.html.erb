@@ -30,13 +30,13 @@
 
     <% if user_signed_in? %>
     <div data-controller="dropdown" class="tset">
-    <button id="dropdownHoverButton"
-      class="flex justify-between w-full text-white bg-white-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center items-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
-      type="button"
-      data-action="mouseover->dropdown#show mouseleave->dropdown#hide">
-        <span>Favoris </span>
-      <i class="fa-solid fa-caret-down ml-2"></i>
-    </button>
+      <button id="dropdownHoverButton"
+        class="flex justify-between w-full text-white bg-white-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-white-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center items-center dark:bg-white-600 dark:hover:bg-white-700 dark:focus:ring-white-800"
+        type="button"
+        data-action="mouseover->dropdown#show mouseleave->dropdown#hide">
+          <span>Favoris </span>
+        <i class="fa-solid fa-caret-down ml-2"></i>
+      </button>
     <% end %>
 
     <div id="dropdownHover"
@@ -44,13 +44,13 @@
       data-action="mouseenter->dropdown#show mouseleave->dropdown#hide">
 
       <% if user_signed_in? %>
-      <%= turbo_stream_from "favorites_#{current_user.id}" %>
-      <% unless @favorites.empty? %>
-        <div id="favorites">
-          <%= render "shared/favorites", favorites: @favorites %>
-        </div>
-      <% end %>
+        <%= turbo_stream_from "favorites_#{current_user.id}" %>
+        <% unless @favorites.empty? %>
+          <div id="favorites">
+            <%= render "shared/favorites", favorites: @favorites %>
+          </div>
         <% end %>
+      <% end %>
     </div>
   </div>
 
