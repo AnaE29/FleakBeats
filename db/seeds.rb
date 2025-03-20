@@ -55,80 +55,80 @@ tracks = {
   22 => [
     {
       name: "davy_jones",
-      artist: "Hans Zimmer"
+      artist: "Davy Jones"
     }, {
       name: "he_s_a_pirate",
-      artist: "Hans Zimmer",
+      artist: "He's a pirate",
     }, {
       name: "hoist_the_colours",
-      artist: "Hans Zimmer",
+      artist: "Hoist the colours",
     }, {
       name: "up_is_down",
-      artist: "Hans Zimmer",
+      artist: "Up is down",
     }
   ],
   93405 => [
     {
       name: "mingle_game",
-      artist: "Pink Soldiers"
+      artist: "Mingle Game"
     }, {
       name: "pink_soldiers",
       artist: "Pink Soldiers",
     }, {
       name: "the_blue_danube_waltz",
-      artist: "Johann Strauss II",
+      artist: "The Blue Danube",
     }
   ],
   808 => [
     {
       name: "all_stars",
-      artist: "Smash Mouth"
+      artist: "All Stars"
     }, {
       name: "holding_out_for_a_hero",
-      artist: "Smash Mouth",
+      artist: "Holdin' Out for a Hero",
     }, {
       name: "im_a_believer",
-      artist: "Smash Mouth",
+      artist: "I'm a Believer",
     }, {
       name: "hallelujah",
-      artist: "Rufus Wainwright",
+      artist: "Hallelujah",
     }
   ],
   66732 => [
     {
       name: "africa",
-      artist: "Toto",
+      artist: "Africa",
     },
     {
       name: "ghostbusters",
-      artist: "Ray Parker"
+      artist: "Ghostbusters",
     },
     {
       name: "running_up_that_hill",
-      artist: "Kate Bush",
+      artist: "Running Up That Hill",
     },
     {
       name: "should_i_stay_or_should_i_go",
-      artist: "The Clash",
+      artist: "Should I Stay or Should I Go",
     },
     {
       name: "time_after_time",
-      artist: "Cyndi Lauper",
+      artist: "Time After Time",
     }
   ],
   916224 => [
     {
       name: "kanata_haluka",
-      artist: "Radwimps"
+      artist: "Kanata Haluka",
     }, {
       name: "suzume_no_tojimari",
-      artist: "Suzume",
+      artist: "Suzume no Tojimari",
     }, {
       name: "tamaki",
-      artist: "Suzume",
+      artist: "Tamaki",
     }, {
       name: "tears_of_suzume",
-      artist: "Suzume",
+      artist: "Tears of Suzume",
     }
   ]
 }
