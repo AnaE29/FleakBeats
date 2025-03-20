@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FleakBeats</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+  <title><%= content_for?(:title) ? yield(:title) : "FleakBeats - La plateforme musicale ultime" %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Plateforme musicale en développement' %>">
+  <meta property="og:image" content="<%= request.base_url %>/images/og-image.png">
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <script src="https://cdn.jsdelivr.net/gh/foobar404/wave.js/dist/bundle.js"></script>
+    <%= favicon_link_tag 'favicon.ico' %>
+
 
   </head>
 
