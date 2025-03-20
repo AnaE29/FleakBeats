@@ -1,5 +1,5 @@
 <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-    <% favorites.each do |favorite| %>
-      <li class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><%= "#{favorite.track.playlist.name} - #{favorite.track.name.gsub("_", " ").titleize}" %></li>
-    <% end %>
-    </ul>
+  <% favorites.each do |favorite| %>
+    <li data-playlist-name="<%= favorite.track.playlist.name %>" data-action="click->player#startFavorite" data-playlist="<%= favorite.track.playlist.show_id %>" data-index="<%= favorite.track.playlist.tracks.where(lofi: favorite.track.name.include?('lofi')).index { |track| track.name == favorite.track.name } %>" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><%= "#{favorite.track.playlist.name} - #{favorite.track.name.titleize}" %></li>
+  <% end %>
+</ul>
