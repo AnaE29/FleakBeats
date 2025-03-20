@@ -78,16 +78,17 @@ export default class extends Controller {
           })
             .then(response => response.json())
             .then(data => {
-              let button = document.getElementById(Amplitude.getConfig().active_playlist);
-              console.log(button);
-
-              if (data.favorite) {
-                if (!button.classList.contains('saved')) {
-                  button.classList.toggle('saved');
+              let buttons = document.getElementsByClassName(Amplitude.getConfig().active_playlist);
+              buttons = Array.from(buttons);
+              buttons.forEach((button) => {
+                if (data.favorite) {
+                  if (!button.classList.contains('saved')) {
+                    button.classList.toggle('saved');
+                  }
+                } else {
+                  button.classList.remove('saved')
                 }
-              } else {
-                button.classList.remove('saved')
-              }
+              });
             })
             .catch(error => {
               console.error("Erreur lors de la vérification du favori: ", error);
