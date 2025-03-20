@@ -8,10 +8,9 @@
 }
 
 .show-card.flipped {
-  transform: translate(-50%, -50%) rotateY(180deg) ;
+  transform: rotateY(180deg) ;
   position: absolute;
   top: 50%;
-  left: 50%;
   width: 200px;
   height: 354px;
 }

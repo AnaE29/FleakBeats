@@ -119,7 +119,7 @@ export default class extends Controller {
   }
 
   switch(event) {
-    document.body.classList.toggle("blured")
+    document.querySelector(".background_video").classList.toggle("blured")
     document.querySelector('.crt_lines').classList.toggle('hidden')
     Amplitude.stop()
     const isChecked = event.target.checked;
